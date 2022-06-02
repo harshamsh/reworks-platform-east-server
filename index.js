@@ -1,22 +1,23 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
+const port = 5000
 
-// testing data
+////Express Config
 app.use(express.json())
-//cors
 app.use(cors())
 
-//importing mongodb 
+///Connecting to MongoDB Atlas
 require('./database/mongoose')
 
-// importing router
-const myrouter=require('./routes/index.js')
+///Importing Routers
+const myrouter = require('./routes/index.js')
 const productsRouter = require('./routes/products.js')
 app.use(productsRouter)
 app.use(myrouter)
-app.listen(5000,()=>{
-    console.log("its working")
+
+app.listen(port,()=>{
+    console.log(`Server running on port ${port}`)
 })
 
 
