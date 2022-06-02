@@ -3,7 +3,7 @@ const ProductMock = require('../mock/products.js')
 const Products = require('../models/product.model.js')
 
 
-// fetching the products
+//// Get all Products
 router.get('/products', async (req,res,next)=>{
      
     let getproduct = await Products.find()
@@ -11,7 +11,7 @@ router.get('/products', async (req,res,next)=>{
 
 })
 
-// adding to db
+///// Add Single/Multipl Products
 router.post('/addproducts',async (req,res,next)=>{
     // req.body(this.name)
     try {
@@ -26,15 +26,17 @@ router.post('/addproducts',async (req,res,next)=>{
 })
 
 
-//fetch product with id
+//// Fetch Product by productId
 router.get('/products/:id',(req,res,next)=>{
     for (let index = 0; index < Products.length; index++) 
     {
-        const element = Products[index];
-        // console.log(element)
-        if (element.id === parseInt(req.params.id)) {
-            return res.send(element)
-        }
+
+        ////TODO - Harsha : Use Product data from MongoDB Product collection
+
+        // const element = Products[index];
+        // if (element.id === parseInt(req.params.id)) {
+        //     return res.send(element)
+        // }
         
     }
     res.send("enter a valid id")
