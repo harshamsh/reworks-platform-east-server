@@ -32,7 +32,7 @@ router.post('/addproducts',async (req,res,next)=>{
 
 router.get('/products/:id',(req,res,next)=>{
     //feteching id parameter
-    fetchid = req.params.id;
+    var productId = req.params.id;
     //finding the value via productId field in the db
    var product = await  ProductModel.findOne({productId})
    res.send(product)
