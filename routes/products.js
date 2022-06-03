@@ -34,7 +34,8 @@ router.get('/products/:id',(req,res,next)=>{
     //feteching id parameter
     fetchid = req.params.id;
     //finding the value via productId field in the db
-    ProductModel.find(({productId:fetchid}),function(err,val){
+   var product = await  ProductModel.findOne({productId})
+   res.send(product)
         res.send(val)
 
     })
