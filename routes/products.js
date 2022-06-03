@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const ProductMock = require('../mock/products.js')
+const ProductModel = require('../models/product.model.js')
 const Products = require('../models/product.model.js')
 
 
@@ -7,6 +8,7 @@ const Products = require('../models/product.model.js')
 router.get('/products', async (req,res,next)=>{
      
     let getproduct = await Products.find()
+    // console.log(Products.length)
     res.send(getproduct)
 
 })
@@ -27,19 +29,30 @@ router.post('/addproducts',async (req,res,next)=>{
 
 
 //// Fetch Product by productId
+
 router.get('/products/:id',(req,res,next)=>{
-    for (let index = 0; index < Products.length; index++) 
-    {
+    //feteching id parameter
+    fetchid = req.params.id;
+    //finding the value via productId field in the db
+    ProductModel.find(({productId:fetchid}),function(err,val){
+        res.send(val)
 
-        ////TODO - Harsha : Use Product data from MongoDB Product collection
+    })
 
-        // const element = Products[index];
-        // if (element.id === parseInt(req.params.id)) {
-        //     return res.send(element)
-        // }
+
+  // for (let index = 0; index < Products.length; index++) 
+    // {
+
+    //     console.log(index)
+    //     ////TODO - Harsha : Use Product data from MongoDB Product collection
+
+    //     // const element = Products[index];
+    //     // if (element.id === parseInt(req.params.id)) {
+    //     //     return res.send(element)
+    //     // }
         
-    }
-    res.send("enter a valid id")
+    // }
+    // res.send("enter a valid id")
 })
 
 module.exports = router
