@@ -30,30 +30,15 @@ router.post('/addproducts',async (req,res,next)=>{
 
 //// Fetch Product by productId
 
-router.get('/products/:id',(req,res,next)=>{
+router.get('/products/:id',async (req,res,next)=>{
     //feteching id parameter
     var productId = req.params.id;
     //finding the value via productId field in the db
-   var product = await  ProductModel.findOne({productId})
-   res.send(product)
-        res.send(val)
+  
+    var product = await  ProductModel.findOne({productId})
+    if (!product) return res.status(404).send("check your id number")
+    res.send(product)       
 
     })
-
-
-  // for (let index = 0; index < Products.length; index++) 
-    // {
-
-    //     console.log(index)
-    //     ////TODO - Harsha : Use Product data from MongoDB Product collection
-
-    //     // const element = Products[index];
-    //     // if (element.id === parseInt(req.params.id)) {
-    //     //     return res.send(element)
-    //     // }
-        
-    // }
-    // res.send("enter a valid id")
-})
 
 module.exports = router
