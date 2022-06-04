@@ -27,7 +27,8 @@ router.post('/users', async (req, res) => {
 ///////View All Users
 router.get('/users', async (req, res) => {
     
-    /// !!!NOTE - Limiting results to 20 products
+    /// !!!NOTE - Limiting results to 20 users
+    /// !!!NOTE - Need to use pagination
     var users = await User.find({}, {
         password: 0,
         jwt: 0

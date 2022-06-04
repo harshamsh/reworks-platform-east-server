@@ -8,6 +8,11 @@ const User = new Schema({
 
     password: String,
 
+    roles: {
+        type: [String],
+        default: ['admin']
+    },
+
     jwt: [String],
 
 })
