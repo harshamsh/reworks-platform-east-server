@@ -12,9 +12,10 @@ require('./database/mongoose')
 
 ///Importing Routers
 const myrouter = require('./routes/index.js')
+const userRouter = require('./routes/users/users.routes')
 const productsRouter = require('./routes/products.js')
-app.use(productsRouter)
-app.use(myrouter)
+
+app.use([myrouter, userRouter, productsRouter])
 
 app.listen(port,()=>{
     console.log(`Server running on port ${port}`)
