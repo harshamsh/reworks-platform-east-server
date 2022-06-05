@@ -28,12 +28,13 @@ router.post('/auth/login', async (req, res) => {
   
     var jwtToken = sign({
         _id: isUserValid._id,
-      role: isUserValid.roles[0],
+        role: isUserValid.roles[0],
         sessionId
       },
       process.env.JWT_SECRET
     );
 
+  /////IGNORE FOR NOW
     await User.updateOne({ email },{
         $push: { jwt: sessionId },
       }
