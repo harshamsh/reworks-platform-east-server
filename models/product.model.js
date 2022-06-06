@@ -17,7 +17,9 @@ const Products = new Schema({
         
     },
 
-    size : String
+    size: String,
+    
+    tags: [String]
 
 
 }) 

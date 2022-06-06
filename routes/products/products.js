@@ -1,7 +1,7 @@
 const router = require('express').Router()
-const ProductMock = require('../mock/products.js')
-const ProductModel = require('../models/product.model.js')
-const Products = require('../models/product.model.js')
+const ProductMock = require('../../mock/products.js')
+const ProductModel = require('../../models/product.model.js')
+const Products = require('../../models/product.model.js')
 
 
 //// Get all Products
