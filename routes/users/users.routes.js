@@ -3,9 +3,17 @@ const { hashSync } = require('bcrypt')
 
 //////Mongoose Models
 const User = require('../../models/users.model')
+const { verifyAuth } = require('../auth/auth.middleware')
 
 
+/////Profile
+router.get('/user/profile',verifyAuth, async (req, res) => {
+    const { _id } = req.userData
 
+    var user = await User.findOne({ _id }, { password: 0, jwt: 0 })
+    res.send(user)
+
+})
 
 /////////CRUD
 //////Create User

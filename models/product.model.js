@@ -2,7 +2,6 @@ const {Schema,model}=require('mongoose')
 
 const Products = new Schema({
      
-    
     name : String,
     
     description : String,
@@ -18,7 +17,9 @@ const Products = new Schema({
         
     },
 
-    size : String
+    size: String,
+    
+    tags: [String]
 
 
 }) 
