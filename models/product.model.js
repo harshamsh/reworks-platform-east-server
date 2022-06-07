@@ -19,11 +19,16 @@ const Products = new Schema({
 
     size: String,
     
-    tags: [String]
+    tags: [String],
+
+    tag: String
 
 
-}) 
+})
+
+Products.index({tag: 'text'})
 
 const ProductModel = model("products", Products)
+
 
 module.exports= ProductModel
