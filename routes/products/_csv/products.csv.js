@@ -12,25 +12,25 @@ router.post("/products/csv/import", async (req, res) => {
         const { products } = req.body
         
         //////Validate and Import Products
-        var temp = []
-        for (let index = 0; index < products.length; index++) {
+        // var temp = []
+        // for (let index = 0; index < products.length; index++) {
 
-          /////Check Duplication
-          var checkProducts = await Product.countDocuments({
-            productId: products[index].productId,
-          });
+        //   /////Check Duplication
+        //   var checkProducts = await Product.countDocuments({
+        //     productId: products[index].productId,
+        //   });
 
-          if (checkProducts !== 0) continue;
+        //   if (checkProducts !== 0) continue;
           
-          /////Separating tags
-            var productTags = (products[index].tags.toString()).split(",")
-            products[index].tags = productTags
+        //   /////Separating tags
+        //     var productTags = (products[index].tags.toString()).split(",")
+        //     products[index].tags = productTags
             
             
-          temp.push(products[index]);
-        }
+        //   temp.push(products[index]);
+        // }
 
-        await Product.insertMany(temp);
+        await Product.insertMany(products);
 
         return res.send({
             status: 'ok',

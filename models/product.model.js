@@ -1,34 +1,27 @@
 const {Schema,model}=require('mongoose')
 
 const Products = new Schema({
-     
-    name : String,
-    
-    description : String,
+  readable_name: String,
 
-    color : String,
+  item_desc: String,
 
-    manDate : String,
+  item_size: String,
 
-    price : String,
+  image_url: String,
 
-    productId : {
-        type  :Number
-        
-    },
+  productId: String,
 
-    size: String,
-    
-    tags: [String],
+  itemId: String,
 
-    tag: String
+  color: String,
 
+  manDate: String,
 
-})
+  price: String,
 
-Products.index({tag: 'text'})
+  tag: String,
+}); 
 
 const ProductModel = model("products", Products)
-
 
 module.exports= ProductModel
