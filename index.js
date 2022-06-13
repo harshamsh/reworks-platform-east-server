@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
-const port = 5000
+// const port = 5000
 const { config } = require('dotenv')
 config()
 
@@ -18,7 +18,7 @@ app.use(globalRouters)
 
 
 /////Start Express Application
-const PORT = process.env.PORT
+const PORT = process.env.PORT 
 app.listen(PORT,()=>{
     console.log(`Server running on port ${PORT}`)
 })
