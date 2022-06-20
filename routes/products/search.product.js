@@ -11,7 +11,7 @@ router.post('/products/search', async (req, res) => {
 
     var products = await Product.find({
         $text: { $search: searchKey }
-    })
+    }).limit(50)
 
     return res.send(products)
 

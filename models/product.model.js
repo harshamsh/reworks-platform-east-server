@@ -22,6 +22,7 @@ const Products = new Schema({
   tag: String,
 }); 
 
+Products.index({ item_desc: "text" });
 const ProductModel = model("products", Products)
 
 module.exports= ProductModel
