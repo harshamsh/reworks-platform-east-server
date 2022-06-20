@@ -54,7 +54,8 @@ router.post('/auth/login', async (req, res) => {
 router.get('/auth/refresh', verifyAuth, async (req, res) => {
 
   return res.send({
-      ...req.userData
+    ...req.userData,
+    roles: [req.userData.role]
   })
   
 })
