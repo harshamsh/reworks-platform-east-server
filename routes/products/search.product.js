@@ -5,7 +5,6 @@ const { getCursor } = require('../../core/pagination/pagination')
 const Product = require('../../models/product.model')
 
 
-
 ////Product - Search by Text
 router.get('/products/search', async (req, res) => {
     let { searchKey, page = 0 } = req.query

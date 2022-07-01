@@ -1,11 +1,7 @@
-
-
-
 /////Cursor Attributes
 const CURSOR = {
     limit: 20
 }
-
 
 ///// Calculate Cursor Position
 const getCursor = (page) => {
@@ -19,6 +15,4 @@ const getCursor = (page) => {
 }
 
 
-module.exports = {
-    getCursor
-}
+module.exports = { getCursor }
