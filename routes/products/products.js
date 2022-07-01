@@ -7,18 +7,18 @@ const Products = require('../../models/product.model.js')
 //// Get all Products
 router.get('/products', async (req,res,next)=>{
      
-    let getproduct = await Products.find()
+    let getProduct = await Products.find()
     // console.log(Products.length)
-    res.send(getproduct)
+    res.send(getProduct)
 
 })
 
-///// Add Single/Multipl Products
+///// Add Single/Multiple Products
 router.post('/addproducts',async (req,res,next)=>{
     // req.body(this.name)
     try {
         await Products.insertMany(req.body)
-    res.send("added sucessfully")
+    res.send("added successfully")
         
     } catch (error) {
         res.status(400).send("idk what happend ")        
@@ -30,8 +30,8 @@ router.post('/addproducts',async (req,res,next)=>{
 
 //// Fetch Product by productId
 
-router.get('/products/:id',async (req,res,next)=>{
-    //feteching id parameter
+router.get('/product/:id',async (req,res,next)=>{
+    //fetching id parameter
     var productId = req.params.id;
     //finding the value via productId field in the db
   
