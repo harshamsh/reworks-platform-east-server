@@ -12,12 +12,44 @@ router.get('/products/search', async (req, res) => {
     ////Find Cursor position
     let { skip, limit } = getCursor(page)
 
-    var products = await Product.find({
-        $text: { $search: searchKey }
-    }).skip(skip).limit(limit)
+    ////Mongo Query
+    let _query = {};
+    if (searchKey) _query = { $text: { $search: searchKey } };
 
+
+    var products = await Product.find(_query).skip(skip).limit(limit)
 
     return res.send(products)
+})
+
+
+
+//////Dashboard
+router.get('/products/dashboard', async (req, res) => {
+    
+    var products = await Product.aggregate([
+        {
+            $project: {
+                name: 1
+            }
+        },
+        {
+            $match: {
+                name: {
+                    $regexMatch: {input: 'nike', regex: 'i'}
+                }
+            }
+        },
+        {
+            $group: {
+                _id: '$name',
+                total: {$sum: 1}
+            }
+        }
+    ])
+
+    res.send(products)
+
 })
 
 
